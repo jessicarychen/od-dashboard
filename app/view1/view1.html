@@ -1,17 +1,17 @@
 
 <div ng-app="myApp" ng-controller="View1Ctrl">
     <p>Choose your neural net</p>
-    <select ng-model="selectedName" ng-options="x for x in names">
+    <select ng-model="selectedName" ng-options="x for x in model_names" ng-change="model_change(selectedName)">
     </select>
     <p>Fine tuning? </p>
-    <select ng-model="Finetuning" ng-options="x for x in tf">
+    <select ng-model="Finetuning" ng-options="x for x in tf" ng-change="ft_change(Finetuning)">
     </select>
     <p>Choose tuning learning rate</p>
-    <input  ng-model="LearningRate" ng-disabled=(Finetuning=="False")>
+    <input  ng-model="LearningRate" ng-disabled=(Finetuning=="False") ng-change="lr_change(LearningRate)"> We recommend the learning rate to be between 0.0001 to 0.001 for images
     <p>upload a tar/zip file of pictures</p>
     <input type="file" id="file" name="file"/>
     <button ng-click="add()">Add</button>
-
+    <button type="button" class='btn btn-default' ng-click="addAlert()">Add Alert</button>
     <!--<ng-template #content let-c="close" let-d="dismiss">-->
         <!--<div class="modal-header">-->
             <!--<h4 class="modal-title" id="modal-basic-title">Hi there!</h4>-->
@@ -28,4 +28,11 @@
     <!--</ng-template>-->
 
     <!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>-->
+    <link href="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" />
+
+    <div ng-controller="View1Ctrl">
+        <button type="button" class="btn btn-primary" ng-model="singleModel" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+            Single Toggle
+        </button>
+    </div>
 </div>
